@@ -1,240 +1,152 @@
-float ABQx = 470;
-float ABQy = 413;
-float ADQx = 497;
-float ADQy = 663;
-float ALBx = 905;
-float ALBy = 250;
-float ANCx = 525;
-float ANCy = 632;
-float ATLx = 793;
-float ATLy = 451;
-float ATWx = 714;
-float ATWy = 250;
-float AUSx = 595;
-float AUSy = 498;
-float AZAx = 399;
-float AZAy = 430;
-float BDLx = 924;
-float BDLy = 271;
-float BETx = 480;
-float BETy = 635;
-float BHMx = 758;
-float BHMy = 449;
-float BILx = 472;
-float BILy = 219;
-float BISx = 564;
-float BISy = 217;
-float BLIx = 327;
-float BLIy = 143;
-float BLVx = 712;
-float BLVy = 361;
-float BNAx = 757;
-float BNAy = 402;
-float BOIx = 376;
-float BOIy = 253;
-float BOSx = 944;
-float BOSy = 255;
-float BRWx = 503;
-float BRWy = 562;
-float BUFx = 841;
-float BUFy = 267;
-float BURx = 287;
-float BURy = 375;
-float BWIx = 882;
-float BWIy = 325;
-float BZNx = 434;
-float BZNy = 224;
-float CDVx = 543;
-float CDVy = 639;
-float CHSx = 855;
-float CHSy = 439;
-float CIDx = 674;
-float CIDy = 300;
-float CLEx = 812;
-float CLEy = 296;
-float CLTx = 841;
-float CLTy = 410;
-float CMHx;
-float CMHy;
-float CRPx;
-float CRPy;
-float CVGx;
-float CVGy;
-float DALx = 625;
-float DALy = 470;
-float DCAx;
-float DCAy;
-float DENx;
-float DENy;
-float DFWx;
-float DFWy;
-float DTWx;
-float DTWy;
-float ELPx;
-float ELPy;
-float EUGx;
-float EUGy;
-float EWRx;
-float EWRy;
-float FAIx;
-float FAIy;
-float FARx;
-float FARy;
-float FATx;
-float FATy;
-float FLLx;
-float FLLy;
-float GEGx;
-float GEGy;
-float GJTx;
-float GJTy;
-float GSPx;
-float GSPy;
-float GTFx;
-float GTFy;
-float HNLx;
-float HNLy;
-float HOUx;
-float HOUy;
-float HPNx;
-float HPNy;
-float IAHx;
-float IAHy;
-float IDAx;
-float IDAy;
-float INDx;
-float INDy;
-float ITOx;
-float ITOy;
-float JANx;
-float JANy;
-float JAXx;
-float JAXy;
-float JFKx;
-float JFKy;
-float JNUx;
-float JNUy;
-float KOAx;
-float KOAy;
-float KTNx;
-float KTNy;
-float LASx;
-float LASy;
-float LAXx;
-float LAXy;
-float LGAx;
-float LGAy;
-float LGBx;
-float LGBy;
-float LIHx;
-float LIHy;
-float MAFx;
-float MAFy;
-float MCIx;
-float MCOx;
-float MCOy;
-float MDWx;
-float MDWy;
-float MEMx;
-float MEMy;
-float MFEx;
-float MFEy;
-float MFRx;
-float MFRy;
-float MIAx;
-float MIAy;
-float MKEx;
-float MKEy;
-float MOTx;
-float MOTy;
-float MSOx;
-float MSOy;
-float MSPx;
-float MSPy;
-float MSYx;
-float MSYy;
-float MYRx;
-float MYRy;
-float OAKx;
-float OAKy;
-float OGGx;
-float OGGy;
-float OKCx;
-float ONTx;
-float ONTy;
-float ORDx;
-float ORDy;
-float PBIx;
-float PBIy;
-float PDXx;
-float PDXy;
-float PHLx;
-float PHLy;
-float PHXx;
-float PHXy;
-float PIAx;
-float PIAy;
-float PITx;
-float PITy;
-float PSGx;
-float PSGy;
-float PSPx;
-float PSPy;
-float RAPx;
-float RAPy;
-float RDUx;
-float RDUy;
-float RFDx;
-float RFDy;
-float RNOx;
-float RNOy;
-float RSWx;
-float RSWy;
-float SANx;
-float SANy;
-float SATx;
-float SATy;
-float SAVx;
-float SAVy;
-float SCCx;
-float SCCy;
-float SCKx;
-float SCKy;
-float SDFx;
-float SDFy;
-float SEAx;
-float SEAy;
-float SGFx;
-float SGFy;
-float SITx;
-float SITy;
-float SJCx;
-float SJCy;
-float SJUx;
-float SJUy;
-float SLCx;
-float SLCy;
-float SMFx;
-float SMFy;
-float SMXx;
-float SMXy;
-float SNAx;
-float SNAy;
-float SRQx;
-float SRQy;
-float STLx;
-float STLy;
-float TPAx;
-float TPAy;
-float TULx;
-float TULy;
-float VPSx;
-float VPSy;
-float WRGx;
-float WRGy;
-float XNAx;
-float XNAy;
-float YAKx;
-float YAKy;
+float alabamaX = 759;
+float alabamaY = 462;
 
-float CIRCLE_RAD = 6;
+float alaskaX = 522;
+float alaskaY = 605;
+
+float arizonaX = 401;
+float arizonaY = 419;
+
+float arkansasX = 672;
+float arkansasY = 431;
+
+float californiaX = 301;
+float californiaY = 357;
+
+float coloradoX = 489;
+float coloradoY = 350;
+
+float connecticutX = 925;
+float connecticutY = 270;
+
+float delawareX = 917;
+float delawareY = 326;
+
+float floridaX = 851;
+float floridaY = 533;
+
+float georgiaX = 810;
+float georgiaY = 458;
+
+float hawaiiX = 328;
+float hawaiiY = 656;
+
+float idahoX = 393;
+float idahoY = 256;
+
+float illinoisX = 714;
+float illinoisY = 331;
+
+float indianaX = 756;
+float indianaY = 328;
+
+float iowaX = 655;
+float iowaY = 303;
+
+float kansasX = 591;
+float kansasY = 364;
+
+float kentuckyX = 787;
+float kentuckyY = 372;
+
+float louisianaX = 676;
+float louisianaY = 477;
+
+float maineX = 947;
+float maineY = 193;
+
+float marylandX = 880;
+float marylandY = 322;
+
+float massachusettsX = 943;
+float massachusettsY = 257;
+
+float michiganX = 771;
+float michiganY = 269;
+
+float minnesotaX = 644;
+float minnesotaY = 234;
+
+float mississippiX = 719;
+float mississippiY = 459;
+
+float missouriX = 672;
+float missouriY = 365;
+
+float montanaX = 464;
+float montanaY = 202;
+
+float nebraskaX = 575;
+float nebraskaY = 312;
+
+float nevadaX = 348;
+float nevadaY = 315;
+
+float newHampshireX = 929;
+float newHampshireY = 235;
+
+float newJerseyX = 905;
+float newJerseyY = 294;
+
+float newMexicoX = 478;
+float newMexicoY = 428;
+
+float newYorkX = 884;
+float newYorkY = 257;
+
+float northCarolinaX = 862;
+float northCarolinaY = 395;
+
+float northDakotaX = 570;
+float northDakotaY = 206;
+
+float ohioX = 802;
+float ohioY = 320;
+
+float oklahomaX = 611;
+float oklahomaY = 416;
+
+float oregonX = 314;
+float oregonY = 234;
+
+float pennsylvaniaX = 862;
+float pennsylvaniaY = 297;
+
+float rhodeIslandX = 950;
+float rhodeIslandY = 279;
+
+float southCarolinaX = 842;
+float southCarolinaY = 428;
+
+float southDakotaX = 569;
+float southDakotaY = 261;
+
+float tennesseeX = 758;
+float tennesseeY = 406;
+
+float texasX = 574;
+float texasY = 487;
+
+float utahX = 413;
+float utahY = 333;
+
+float vermontX = 912;
+float vermontY = 224;
+
+float virginiaX = 868;
+float virginiaY = 356;
+
+float washingtonX = 340;
+float washingtonY = 174;
+
+float westVirginiaX = 831;
+float westVirginiaY = 346;
+
+float wisconsinX = 701;
+float wisconsinY = 253;
+
+float wyomingX = 476;
+float wyomingY = 278;
+
+
+float CIRCLE_RAD = 8;

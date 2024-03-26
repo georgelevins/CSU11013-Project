@@ -1,102 +1,151 @@
+
 ArrayList<Flight> flights = new ArrayList<Flight>();
 Table table;
 String flightData;
 PImage border;
-PShape map;
+PImage map;
 PImage logo;
 PImage home;
-Airports test;
-String Origin_State_Name;
-String Origin_City_Name;
+PImage currentImage;
+PImage statesPage;
+States test;
+boolean[] stateClicked;
+
+ float[] stateX = {
+  759, 522, 401, 672, 301, 489, 925, 917, 851, 810, 
+  328, 393, 714, 756, 655, 591, 787, 676, 947, 880, 
+  943, 771, 644, 719, 672, 464, 575, 348, 929, 905, 
+  478, 884, 862, 570, 802, 611, 314, 862, 950, 842, 
+  569, 758, 574, 413, 912, 868, 340, 831, 701, 476
+};
+
+float[] stateY = {
+  462, 605, 419, 431, 357, 350, 270, 326, 533, 458, 
+  656, 256, 331, 328, 303, 364, 372, 477, 193, 322, 
+  257, 269, 234, 459, 365, 202, 312, 315, 235, 294, 
+  428, 257, 395, 206, 320, 416, 234, 297, 279, 428, 
+  261, 406, 487, 333, 224, 356, 174, 346, 253, 278
+};
+
+
+
 
 
 void setup() {
   
-  
   size(1230, 820);
   table = loadTable("flights2k(1).csv", "header");
 
-  Origin_City_Name = "Dallas, TX"; // EG; FRONT END MAKE Origin_City_Name CHANGE TO 
-                            // Dallas, TX WHEN Dallas is clicked
-  
-  
   border = loadImage("border.png");
-  map = loadShape("CANADA.svg");
   logo = loadImage("logo.png");
   home = loadImage("home.png");
+  map = loadImage("CANADA.png");
+  statesPage = loadImage("borderForStates.png");
 
-for (int i = 0; i < 100; i++) {
+  for (int i = 0; i < 20; i++) {
     Flight newFlight = new Flight(table.getRow(i));
-    if(newFlight.ORIGIN_CITY_NAME.equals(Origin_City_Name))
-    {
     flights.add(newFlight);
-   // println(newFlight.ORIGIN_CITY_NAME);
-    }
-  
   }
    textSize(10);
    frameRate(30);
 
-  test = new Airports();
+  test = new States();
+  stateClicked = new boolean[50];
+  
+  
+  for (int i = 0; i < stateClicked.length; i++)
+  {
+    stateClicked[i] = false;
+  }
+ 
+ 
+  
 }
 
-void mousePressed()  {
- 
-  
- 
-  
-  
-  
-  println("Clicked at (" + mouseX + ", " + mouseY + ")");
- //if (mouseX >= AUSx - CIRCLE_RAD && mouseX <= AUSx + CIRCLE_RAD &&
- //     mouseY >= AUSy - CIRCLE_RAD && mouseY <= AUSy + CIRCLE_RAD) {
- //   Origin_City_Name = "Dallas, TX";
- //  for (int i = 0; i < flights.size(); i++) {
- //   Flight flight = flights.get(i); // iterates through the array list flights 
- //     if (flight.ORIGIN_CITY_NAME.equals("Austin, TX")) {
- //       displayFlightInfo(flight);
- //     }
- //  }
-      
-  if (mouseX >= DALx - CIRCLE_RAD && mouseX <= DALx + CIRCLE_RAD &&
-      mouseY >= DALy - CIRCLE_RAD && mouseY <= DALy + CIRCLE_RAD) {
-      Origin_City_Name = "Dallas, TX";
-   for (int i = 0; i < flights.size(); i++) {
-    Flight flight = flights.get(i); // iterates through the array list flights 
-      if (flight.ORIGIN_CITY_NAME.equals("Dallas, TX")) {
-        displayFlightInfo(flight);
-      }
+
+
+
+
+void mousePressed()  {  //<>// //<>// //<>//
+  if (mouseX >= -70 && mouseX <= -70 + home.width && mouseY >= 60 && mouseY <= 60 + home.height) { //<>//
+    for (int i = 0; i < stateClicked.length; i++) {
+      stateClicked[i] = false;
     }
   }
-}
-
-  void displayFlightInfo(Flight flight) {
- 
-  String info = "Flight Carrier: " + flight.MKT_CARRIER + "\n" +
-                "Flight Number: " + flight.MKT_CARRIER_FL_NUM + "\n" +
-                "Origin: " + flight.ORIGIN + "\n" +
-                "Destination: " + flight.DEST + "\n" +
-                "Departure Time: " + flight.CRS_DEP_TIME + "\n" +
-                "Arrival Time: " + flight.CRS_ARR_TIME + "\n" +
-                "Cancelled: " + flight.CANCELLED + "\n" +
-                "Diverted: " + flight.DIVERTED + "\n" +
-                "Distance: " + flight.DISTANCE;
-                println();
-                println();
-                
+     //<>//
+    
+  for (int i = 0; i < stateClicked.length; i++) //<>//
+  {
+    if (!stateClicked[i] && dist(mouseX, mouseY, stateX[i], stateY[i]) <= CIRCLE_RAD/2)
+    {
+      stateClicked[i] = true;
+    }
+  } 
+  }
   
- 
-  println(info);
-}
+  
+  
+  
+  
+  
 void draw() {
-
  background (0, 125, 255);
   
   image(border, 120, 80);
-  shape(map, 195, 130);
   image(logo, -70, -70);
   image(home, -70, 60);
+   image(map, 195, 130);
   
-  test.drawAirports();
-
+  for (int i = 0; i < stateClicked.length; i++)
+  {
+    if (stateClicked[i])
+    {
+       image(statesPage, 174, 106);
+       break;
+    }
+    else if (!stateClicked[i])
+    {
+      test.drawStates();
+    }
+  }
+  
 }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+//void text_ArrayList(Table table) {
+
+ 
+    
+ //   for (int y = 0; y < flights.size(); y++) {
+ //     Flight flight = flights.get(y);
+    
+ //       flightData ="MKT_CARRIER: " + flight.MKT_CARRIER + ", " +
+ //                 "MKT_CARRIER_FL_NUM: " + flight.MKT_CARRIER_FL_NUM + ", " +
+ //                 "ORIGIN: " + flight.ORIGIN + ", " +
+ //                 "DEST: " + flight.DEST + ", " +
+ //                 "CRS_DEP_TIME: " + flight.CRS_DEP_TIME + ", " +
+ //                 "CRS_ARR_TIME: " + flight.CRS_ARR_TIME + ", " +
+ //                 "CANCELLED: " + flight.CANCELLED + ", " +
+ //                 "DIVERTED: " + flight.DIVERTED + ", " +
+ //                 "DISTANCE: " + flight.DISTANCE;
+      
+     
+ //     fill(0, 0, 250);
+ //     text(flightData, 40, 50 * y);
+
+//  }

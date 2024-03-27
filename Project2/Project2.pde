@@ -9,7 +9,9 @@ PImage home;
 PImage currentImage;
 PImage statesPage;
 States test;
+StatePage StateIn;
 boolean[] stateClicked;
+//String stateFocus;
 
  float[] stateX = {
   759, 522, 401, 672, 301, 489, 925, 917, 851, 810, 
@@ -26,10 +28,6 @@ float[] stateY = {
   428, 257, 395, 206, 320, 416, 234, 297, 279, 428, 
   261, 406, 487, 333, 224, 356, 174, 346, 253, 278
 };
-
-
-
-
 
 void setup() {
   
@@ -53,9 +51,11 @@ void setup() {
   stateClicked = new boolean[50];
   
   
+  
   for (int i = 0; i < stateClicked.length; i++)
   {
     stateClicked[i] = false;
+    statePressed = false;
   }
  
  
@@ -67,25 +67,31 @@ void setup() {
 
 
 void mousePressed()  {  //<>// //<>// //<>//
+  //println("george");
+  
   if (mouseX >= -70 && mouseX <= -70 + home.width && mouseY >= 60 && mouseY <= 60 + home.height) { //<>//
     for (int i = 0; i < stateClicked.length; i++) {
       stateClicked[i] = false;
+      statePressed = false;
     }
-  }
-     //<>//
-    
+  }  //<>//
   for (int i = 0; i < stateClicked.length; i++) //<>//
   {
     if (!stateClicked[i] && dist(mouseX, mouseY, stateX[i], stateY[i]) <= CIRCLE_RAD/2)
     {
       stateClicked[i] = true;
+      //print(i);
+      StateIn = new StatePage(i);
+      
+      
+      
     }
   } 
   }
   
   
   
-  
+boolean statePressed = false;
   
   
 void draw() {
@@ -94,16 +100,19 @@ void draw() {
   image(border, 120, 80);
   image(logo, -70, -70);
   image(home, -70, 60);
-   image(map, 195, 130);
+  image(map, 195, 130);
   
   for (int i = 0; i < stateClicked.length; i++)
   {
     if (stateClicked[i])
     {
-       image(statesPage, 174, 106);
-       break;
+       //image(statesPage, 174, 106);
+       
+       StateIn.draw();
+       statePressed = true;
+       //break;
     }
-    else if (!stateClicked[i])
+    else if (!stateClicked[i] && statePressed == false)
     {
       test.drawStates();
     }

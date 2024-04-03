@@ -1,4 +1,3 @@
-
 ArrayList<Flight> flights = new ArrayList<Flight>();
 Table table;
 String flightData;
@@ -11,7 +10,6 @@ PImage statesPage;
 States test;
 StatePage StateIn;
 boolean[] stateClicked;
-//String stateFocus;
 
  float[] stateX = {
   759, 522, 401, 672, 301, 489, 925, 917, 851, 810, 
@@ -66,20 +64,21 @@ void setup() {
 
 
 
-void mousePressed()  {  //<>// //<>// //<>//
-  //println("george");
-  
+void mousePressed()  { //<>//
   if (mouseX >= -70 && mouseX <= -70 + home.width && mouseY >= 60 && mouseY <= 60 + home.height) { //<>//
     for (int i = 0; i < stateClicked.length; i++) {
       stateClicked[i] = false;
       statePressed = false;
     }
   }  //<>//
+  
+  if (statePressed == false) {
   for (int i = 0; i < stateClicked.length; i++) //<>//
   {
     if (!stateClicked[i] && dist(mouseX, mouseY, stateX[i], stateY[i]) <= CIRCLE_RAD/2)
     {
       stateClicked[i] = true;
+     
       //print(i);
       StateIn = new StatePage(i);
       
@@ -88,6 +87,7 @@ void mousePressed()  {  //<>// //<>// //<>//
     }
   } 
   }
+}
   
   
   
@@ -117,44 +117,4 @@ void draw() {
       test.drawStates();
     }
   }
-  
 }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-//void text_ArrayList(Table table) {
-
- 
-    
- //   for (int y = 0; y < flights.size(); y++) {
- //     Flight flight = flights.get(y);
-    
- //       flightData ="MKT_CARRIER: " + flight.MKT_CARRIER + ", " +
- //                 "MKT_CARRIER_FL_NUM: " + flight.MKT_CARRIER_FL_NUM + ", " +
- //                 "ORIGIN: " + flight.ORIGIN + ", " +
- //                 "DEST: " + flight.DEST + ", " +
- //                 "CRS_DEP_TIME: " + flight.CRS_DEP_TIME + ", " +
- //                 "CRS_ARR_TIME: " + flight.CRS_ARR_TIME + ", " +
- //                 "CANCELLED: " + flight.CANCELLED + ", " +
- //                 "DIVERTED: " + flight.DIVERTED + ", " +
- //                 "DISTANCE: " + flight.DISTANCE;
-      
-     
- //     fill(0, 0, 250);
- //     text(flightData, 40, 50 * y);
-
-//  }

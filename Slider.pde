@@ -17,25 +17,22 @@ class Slider {
     this.handleSize = height;
   }
   
-  // Display the slider
+
   void draw() {
     // Draw the slider track
     fill(200);
     rect(x, y, length, height);
     
-    // Calculate the position of the slider handle based on its value
     float handleX = map(value, minValue, maxValue, x, x + length - handleSize);
     
-    // Draw the slider handle
+
     fill(100);
     rect(handleX, y, handleSize, height);
   }
   
-  // Update the value of the slider based on mouse interaction
   void update() {
  float handleX = map(value, minValue, maxValue, x, x + length - handleSize);
-  if ((mousePressed && mouseX > handleX || mousePressed && mouseX < handleX) && mouseX < handleX + handleSize && mouseY > y && mouseY < y + height) {
-    // Calculate the new value of the slider based on mouse position
+  if (mousePressed && mouseX > x && mouseX < handleX + handleSize && mouseY > y && mouseY < y + height) {
     float newValue = map(mouseX, x, x + length - handleSize, minValue, maxValue);
     value = constrain(newValue, minValue, maxValue);
 }

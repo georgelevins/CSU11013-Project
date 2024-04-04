@@ -12,6 +12,7 @@ StatePage StateIn;
 boolean[] stateClicked;
 int currentScreen = 1;
 Info info;
+AirportInfo airportInfo;
 String message = "";
 String message2 = "";
 int fontsize = 48;
@@ -42,6 +43,7 @@ void setup() {
   slider = new Slider(300, 600, 200, 20, 1, 31);
   slider2 = new Slider(720, 600, 200, 20, 1, 31);
   info = new Info();
+  airportInfo = new AirportInfo();
   size(1230, 820);
   table = loadTable("flights2k(1).csv", "header");
 
@@ -82,6 +84,7 @@ void mousePressed()  { //<>//
     for (int i = 0; i < stateClicked.length; i++) {
       stateClicked[i] = false;
       statePressed = false;
+      airportPressed = false;
     }
   }  //<>//
   
@@ -218,10 +221,11 @@ void drawScreen4(){
     rect(10, 30, width - 20, 40);
     fill(0);
     textAlign(LEFT, TOP);
+    textSize(fontsize);
     text(userInput, 20, 30);
     textSize(fontsize);
     while (textWidth(message) >1230) {
-        fontsize--; // Decrease font size until text fits within maxWidth
+        fontsize--; 
         textSize(fontsize);
       }
     text(message, 10, 410);

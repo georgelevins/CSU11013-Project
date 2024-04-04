@@ -20,7 +20,7 @@ boolean firstTimeDrawing = true;
 //Button[] buttons = new Button[3];
 
 
-class StatePage {
+class StatePage { //<>//
   //boolean firstTimeDrawing = true;
 
   String state;
@@ -150,8 +150,8 @@ boolean isOverButton(int buttonX, int buttonY, int buttonWidth, int buttonHeight
           println("clicked");
           // = i;
           
-          
-          AirportIn = new AirportPage(buttons[i].buttonText);
+
+          AirportIn = new AirportPage(buttons[i].buttonText,state);
           airportPressed = true;
           delay(500);
         }
@@ -169,7 +169,7 @@ boolean isOverButton(int buttonX, int buttonY, int buttonWidth, int buttonHeight
 //  }
 //}
     
-  void draw() {  
+  void draw() {
     image(background, 174, 106);
     //mouseClicked();
     for (int i = 0; i < buttons.length; i++) {

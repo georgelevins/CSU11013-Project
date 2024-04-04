@@ -30,7 +30,6 @@ class Slider {
     rect(handleX, y, handleSize, height);
   }
   
-
   void update() {
  float handleX = map(value, minValue, maxValue, x, x + length - handleSize);
   if (mousePressed && mouseX > x && mouseX < handleX + handleSize && mouseY > y && mouseY < y + height) {

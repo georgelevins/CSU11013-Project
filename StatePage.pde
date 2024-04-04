@@ -150,7 +150,7 @@ boolean isOverButton(int buttonX, int buttonY, int buttonWidth, int buttonHeight
           println("clicked");
           // = i;
           
-          
+
           AirportIn = new AirportPage(buttons[i].buttonText,state);
           airportPressed = true;
           delay(500);

@@ -14,13 +14,30 @@ class Info {
     int totalDestFlights = totalDestFlights(targetDestAirport);
     return ("There are " + totalOriginFlights + " flights from " + targetOriginAirport + " and " + totalDestFlights + " flights to " + targetDestAirport + " for a total of " + (totalDestFlights + totalOriginFlights) + " flights");
   }
+  
+  String getOriginAbr(String airportName) {
+    String airportAbr = null;
+    
+    //boolean found = false;
+    
+    for (TableRow row: table.matchRows(airportName, "ORIGIN_CITY_NAME") ) {
+      
+      airportAbr = row.getString("ORIGIN");
+      println("origin is " + airportAbr);
+      break;
+      
+    }
+    return airportAbr;
+  }
+
+  
 
   int totalOriginFlights(String targetOriginAirport) {
   
     int totalFlights = 0;
   
     for (TableRow row : table.matchRows(targetOriginAirport, "ORIGIN_CITY_NAME")) {
-      println(row.getString("ORIGIN_CITY_NAME") + " -> " + row.getString("DEST_CITY_NAME"));
+      //println(row.getString("ORIGIN_CITY_NAME") + " -> " + row.getString("DEST_CITY_NAME"));
       totalFlights++;
     }
   
@@ -32,7 +49,7 @@ class Info {
     int totalFlights = 0;
   
     for (TableRow row : table.matchRows(targetDestAirport, "DEST_CITY_NAME")) {
-      println(row.getString("ORIGIN_CITY_NAME") + " -> " + row.getString("DEST_CITY_NAME"));
+      //println(row.getString("ORIGIN_CITY_NAME") + " -> " + row.getString("DEST_CITY_NAME"));
       totalFlights++;
     }
   

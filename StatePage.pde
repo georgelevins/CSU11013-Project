@@ -1,4 +1,6 @@
 PImage background;
+PImage arrowleft;
+PImage arrowright;
 PFont titleText;
 String[] lines;  
 //Button[] buttons;
@@ -8,6 +10,8 @@ int airportFocus;
 boolean airportPressed = false;
 AirportPage AirportIn;
 boolean firstTimeDrawing = true;
+int pageNumber = 1;
+int totalPagesNeeded;
 
 
 
@@ -52,6 +56,11 @@ class StatePage { //<>//
     stateAbbreviation = stateAbbreviations[stateNumber];
     println("state is: " + state);
     background = loadImage("borderForStates.png");
+    arrowleft = loadImage("arrowleft.png");
+    arrowright = loadImage("arrowright.png");
+    
+    //arrowleft.resize(100, 100);
+
     //background = loadImage("data/backgrounds/" + stateAbbreviation + ".png");
     
     
@@ -75,31 +84,22 @@ class StatePage { //<>//
         buttons[i] = new Button(xButtonPos, yButtonPos, 120, 40, airport);
         
         yButtonPos = yButtonPos +100;
-        if(i==3 || i==7 || i==11) {
+        if(i==3 || i==7 || i==11 || i==15 || i==19 || i==23 || i==27 || i==31 || i==35 || i==41 || i==45 || i==49 || i==63 ) {
           xButtonPos = xButtonPos + 200;
           yButtonPos = 250;
          }
+         
+         if(i==15 || i==31 || i==47 || i==63) {
+           
+           xButtonPos = 200;
+           yButtonPos = 250;
+         }
+         
     }
     
-    //buttons[0] = new Button(200, 250, 120, 40, "Button 1");
-    //buttons[1] = new Button(200, 350, 120, 40, "Button 2");
-    //buttons[2] = new Button(200, 450, 120, 40, "Button 3");
-    //buttons[3] = new Button(200, 550, 120, 40, "Button 4");
+    totalPagesNeeded = ceil(airports.length/16);
     
-    //buttons[4] = new Button(400, 250, 120, 40, "Button 5");
-    //buttons[5] = new Button(400, 350, 120, 40, "Button 6");
-    //buttons[6] = new Button(400, 450, 120, 40, "Button 7");
-    //buttons[7] = new Button(400, 550, 120, 40, "Button 8");
     
-    //buttons[8] = new Button(600, 250, 120, 40, "Button 1");
-    //buttons[9] = new Button(600, 350, 120, 40, "Button 2");
-    //buttons[10] = new Button(600, 450, 120, 40, "Button 3");
-    //buttons[11] = new Button(600, 550, 120, 40, "Button 4");
-    
-    //buttons[12] = new Button(800, 250, 120, 40, "Button 5");
-    //buttons[13] = new Button(800, 350, 120, 40, "Button 6");
-    //buttons[14] = new Button(800, 450, 120, 40, "Button 7");
-    //buttons[15] = new Button(800, 550, 120, 40, "Button 8");
   } 
   
 String[] getAirportsForState(String stateAbr) {
@@ -151,26 +151,26 @@ boolean isOverButton(int buttonX, int buttonY, int buttonWidth, int buttonHeight
           // = i;
           
 
-          AirportIn = new AirportPage(buttons[i].buttonText,state);
+          AirportIn = new AirportPage(buttons[i].buttonText);
           airportPressed = true;
           delay(500);
         }
       }
     }
 }
-
-//void mouseClicked() {
-//  // Check if any button is clicked
-//  for (int i = 0; i < buttons.length; i++) {
-//    if (buttons[i].isClicked(mouseX, mouseY)) {
-//      println("Button " + (i + 1) + " clicked!");
-//      // Perform actions when the button is clicked
-//    }
-//  }
-//}
     
   void draw() {
+    if(totalPagesNeeded>1) {
+      if(pageNumber==1) {
+        image(arrowleft, 200, 130);
+      }
+      if (pageNumber>1 && pageNumber<totalPagesNeeded) {
+        image(arrowright, 950, 130);
+      }
+    } 
+
     image(background, 174, 106);
+
     //mouseClicked();
     for (int i = 0; i < buttons.length; i++) {
       buttons[i].display();
@@ -188,8 +188,9 @@ boolean isOverButton(int buttonX, int buttonY, int buttonWidth, int buttonHeight
     }
       textFont(titleText);
       fill(255, 255, 255);
-      //textAlign(CENTER, CENTER);
-      text(state, 340, 160); 
+      textAlign(CENTER, CENTER);
+      //text(state, 340, 160); 
+      text(state, 174+(882)/2-20, 160);
       
     }
     

@@ -1,12 +1,12 @@
 PImage background2;
 PFont titleText2; 
 String airportAbbreviation;
-String state;
+//String state;
 
 class AirportPage {
   
-  AirportPage (String airportAbr, String place) {
-    state = place;
+  AirportPage (String airportAbr) {
+    //state = place;
     background2 = loadImage("borderForStates.png");
     titleText2 = createFont("Roboto-Regular.ttf", 70);
     textFont(titleText2);
@@ -14,11 +14,11 @@ class AirportPage {
   } 
 
   void draw() {  
-    image(background, 174, 106);
-    textFont(titleText);
+    image(background2, 174, 106);
+    textFont(titleText2);
     fill(255, 255, 255);
     textAlign(TOP, LEFT);
-    text(airportAbbreviation, 340, 160);
+    text(airportAbbreviation, 180, 160);
     textSize(fontsize);
     fontsize = 20;
     textSize(fontsize);

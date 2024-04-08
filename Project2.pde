@@ -6,6 +6,7 @@ PImage map;
 PImage logo;
 PImage home;
 PImage currentImage;
+PImage barChartIcon;
 PImage statesPage;
 States test;
 StatePage StateIn;
@@ -20,6 +21,9 @@ String message3 = "";
 String message4 = "";
 Slider slider;
 Slider slider2;
+boolean searchBarMode = false;
+boolean showSearchResult = false;
+AirportPage AirportIn2;
 
 
 
@@ -51,6 +55,7 @@ void setup() {
   logo = loadImage("logo.png");
   home = loadImage("home.png");
   map = loadImage("CANADA.png");
+  barChartIcon = loadImage("barcharticon4.png");
   statesPage = loadImage("borderForStates.png");
 
   for (int i = 0; i < 20; i++) {
@@ -80,13 +85,24 @@ void setup() {
 
 
 void mousePressed()  { //<>//
+  // if search bar is clicked
+  if (mousePressed && mouseX >= 160 && mouseX <= 1070 && mouseY >= 30 && mouseY <= 70) {
+      //currentScreen = 4;
+      searchBarMode = true;
+    }
+  
   if (mouseX >= -70 && mouseX <= -70 + home.width && mouseY >= 60 && mouseY <= 60 + home.height) { //<>//
+    println("home button pressed");
     for (int i = 0; i < stateClicked.length; i++) {
       stateClicked[i] = false;
       statePressed = false;
       airportPressed = false;
+      searchBarMode = false;
+      showSearchResult = false;
+      userInput = "";
     }
   }  //<>//
+  
   
   if (statePressed == false) {
   for (int i = 0; i < stateClicked.length; i++) //<>//
@@ -115,9 +131,9 @@ public void keyPressed() {
   else if (key == '.') {
       currentScreen = 3;
 }
-    else if (key == '@') {
-      currentScreen = 4;
-}
+//    else if (key == '@') {
+//      currentScreen = 4;
+//}
 else if (key == CODED && keyCode == SHIFT) {
    }
    
@@ -128,11 +144,13 @@ else if (key == BACKSPACE && userInput.length() > 0) {
       userInput = userInput.substring(0, userInput.length() - 1); // Remove the last character if Backspace is pressed
     }
 else if (key == ENTER){
-   if ( currentScreen == 4){
+   if ( searchBarMode == true){
      message = info.getTotalFlights(userInput);
      message2 = info.getLDAirport(userInput);
      message3 = info.getLongestDistanceAsOrigin(userInput);
      message4 = info.getLongestDistanceAsDestination(userInput);
+     showSearchResult = true;
+     
    }
 }
   
@@ -155,9 +173,9 @@ void draw() {
     else if (currentScreen == 3) {
       drawScreen3();
     }
-    else if (currentScreen == 4) {
-      drawScreen4();
-    }
+    //else if (currentScreen == 4) {
+    //  drawScreen4();
+    //}
   }
 
   
@@ -168,6 +186,24 @@ void drawScreen1() {
   image(logo, -70, -70);
   image(home, -70, 60);
   image(map, 195, 130);
+  image(barChartIcon, 20, 300);
+  
+  
+
+    
+  fill(200); 
+  rect(160, 30, 910, 40);
+  fill(0);
+  textAlign(LEFT, TOP);
+  textSize(fontsize);
+  text(userInput, 165, 30);
+  textSize(fontsize);
+  
+  
+    while (textWidth(message) >1230) {
+        fontsize--; 
+        textSize(fontsize);
+      }
   
   for (int i = 0; i < stateClicked.length; i++)
   {
@@ -183,6 +219,19 @@ void drawScreen1() {
     {
       test.drawStates();
     }
+  }
+  
+  if (showSearchResult == true) {
+    String airportAbr = info.getOriginAbr(userInput); //<>//
+    AirportIn = new AirportPage(airportAbr);
+    AirportIn.draw();
+    //image(statesPage, 174, 106);  
+    //fill(0, 0, 0);
+    //textSize(20);
+    //text(message, 190, 210);
+    //text(message2, 190, 310);
+    //text(message3, 190, 410);
+    //text(message4, 190, 510);
   }
 }
  void drawScreen2(){
@@ -228,6 +277,7 @@ void drawScreen4(){
         fontsize--; 
         textSize(fontsize);
       }
+    //textColor(
     text(message, 10, 410);
     text(message2, 10, 510);
     text(message3, 10, 610);
